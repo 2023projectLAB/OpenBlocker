@@ -39,16 +39,14 @@ def on_disconnect(client, userdata, flags, rc=0):
 def on_publish(client, userdata, mid):
     print("In on_pub callback mid= ", mid)
 
-# 새로운 클라이언트 생성
+
 client = mqtt.Client()
-# 콜백 함수 설정 on_connect(브로커에 접속), on_disconnect(브로커에 접속중료), on_publish(메세지 발행)
 client.on_connect = on_connect
 client.on_disconnect = on_disconnect
 client.on_publish = on_publish
-# address : localhost, port: 1883 에 연결
 client.connect('59.1.188.107', 3883)
 client.loop_start()
-# common topic 으로 메세지 발행
+
 i=0
 while(i<100):
     board.set_pin_mode_sonar(TRIGGER_PIN,ECHO_PIN)
