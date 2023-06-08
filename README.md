@@ -41,10 +41,15 @@ def on_publish(client, userdata, mid):
 
 
 client = mqtt.Client()
+
 client.on_connect = on_connect
+
 client.on_disconnect = on_disconnect
+
 client.on_publish = on_publish
+
 client.connect('59.1.188.107', 3883)
+
 client.loop_start()
 
 i=0
@@ -60,7 +65,7 @@ while(i<100):
 
 
 client.loop_stop()
-# 연결 종료
+
 client.disconnect()
 def measure(channel):
     board.set_pin_mode_sonar(TRIGGER_PIN,ECHO_PIN)
